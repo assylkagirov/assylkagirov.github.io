@@ -395,5 +395,16 @@
         duration: 800,
       });
     </script>
+
+    <audio id="background-audio" controls loop>
+  <source src="song.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  document.addEventListener('click', function() {
+    document.getElementById('background-audio').play();
+  });
+</script>
   </body>
 </html>
