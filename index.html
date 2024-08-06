@@ -76,7 +76,7 @@
             <h2 class="title">Adil & Aigerim</h2>
             <h4 class="subtitle tempatwaktu">
               
-                12 October 2024 14:00
+                21 October 2024
                 </br>
                 Kokshetau, Kazakhstan
                 </br>
@@ -105,7 +105,7 @@
               var year = now.getFullYear() + 1;
           
               var nextyear = month + '/' + day + '/' + year + ' 07:07:07';
-              var harih = '10/12/2024 14:00:00';
+              var harih = '10/21/2024 17:00:00';
 
               $('#hitungmundur').countdown({
                 date: harih, // TODO Date format: 07/27/2017 17:00:00
@@ -177,12 +177,12 @@
           <strong> Toı ıeleri:</strong>
 
             <div class="nama-lengkap">
-              Abzal
+              Shatkenov Abzal
 
             </div>
             <div class="nama-lengkap">
 
-              Orynbasar
+              Shatkenova Orynbasar
             </div>
 
           </div>
@@ -203,7 +203,7 @@
                   
                     <p class="is-larger has-text-centered">
                         <div class="waktu tanggal-hari has-text-centered"></div> 
-                        <div class="waktu tanggal-angka has-text-centered">12</div>
+                        <div class="waktu tanggal-angka has-text-centered">21</div>
                         <div class="waktu tanggal-bulan has-text-centered">October 2024</div>
                     </p>
                   
@@ -228,7 +228,7 @@
                     <h1 class="waktu is-larger has-text-centered">
                       Saǵat:
                       <br>
-                      <strong>14:00</strong>
+                      <strong>17:00</strong>
                     </h1>
                     
                     
@@ -269,7 +269,7 @@
 
       
 
-      <!--
+      <!-- Begin Foto -->
       <div class="section-dark foto-foto" id="foto">
         <div class="container">
           <div
@@ -347,7 +347,7 @@
           </div>
         </div>
       </div>
-      -->
+      <!-- End Work Content -->
 
 
       <!-- Begin RSVP Content -->
@@ -363,7 +363,7 @@
             </div>
             <div class="column is-12 prolog has-text-centered">
                 
-                    <a href="https://api.whatsapp.com/send?phone=77011661836&text=Biz%20kelemiz" class="button btn-whatsapp" data-aos="fade-right">
+                    <a href="https://api.whatsapp.com/send?phone=77051074588&text=Biz%20kelemiz" class="button btn-whatsapp" data-aos="fade-right">
                       <i class="fab fa-whatsapp"></i>
                       &nbsp;&nbsp;Whatsapp
                     </a>
@@ -395,16 +395,67 @@
         duration: 800,
       });
     </script>
-
-    <audio id="background-audio" controls loop>
+<audio id="background-audio" controls loop>
   <source src="song.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   document.addEventListener('click', function() {
     document.getElementById('background-audio').play();
+
   });
+
+
 </script>
+
+
+<button id="stop-autoscroll" class="button is-danger is-outlined" style="position: fixed; bottom: 20px; right: 20px;">Tokta</button>
+<script>
+
+let autoscrollEnabled = true;
+let timeoutId = null;
+let scrollPosition = 0;
+
+function startAutoscroll() {
+  var pageHeight = document.body.offsetHeight;
+  var viewportHeight = window.innerHeight;
+  var maxScrollPosition = pageHeight - viewportHeight;
+  var scrollSpeed = 10; // pixels per millisecond
+
+  function animateScroll() {
+    if (scrollPosition >= maxScrollPosition) {
+      // Pause scrolling for 5 seconds
+      clearTimeout(timeoutId);
+      setTimeout(function() {
+        scrollPosition = 0;
+        $('html, body').animate({ scrollTop: 0 }, 50, function() {
+          animateScroll();
+        });
+      }, 10000);
+    } else {
+      if (autoscrollEnabled) {
+        $('html, body').animate({ scrollTop: scrollPosition }, 50);
+        scrollPosition += scrollSpeed;
+        timeoutId = setTimeout(animateScroll, 16); // 16ms = 60fps
+      }
+    }
+  }
+
+  animateScroll();
+}
+
+startAutoscroll();
+
+document.getElementById('stop-autoscroll').addEventListener('click', function() {
+  autoscrollEnabled = false;
+  this.textContent = 'Toktaldy';
+  clearTimeout(timeoutId);
+  $('html, body').stop(true, true); // Stop the animation immediately
+});
+
+</script>
+
+
   </body>
 </html>
